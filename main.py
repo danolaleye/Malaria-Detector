@@ -18,7 +18,7 @@ app.config['SECRET_KEY'] = 'sjhef803or0hnc3'
 
 bootstrap = Bootstrap(app)
 
-saved_model = load_model('mobileNet_malaria_detector.h5')
+saved_model = load_model('malaria_detector.h5')
 # saved_model.predict()
 
 class UploadForm(FlaskForm):
@@ -58,18 +58,15 @@ def predict():
 		img = np.expand_dims(img, axis=0)
 		prediction = saved_model.predict(img)
 
-		prediction = list(zip(*prediction))[1]
+		prediction = list(zip(*prediction))[0]
 		prediction = np.array(prediction) > 0.5
+
 
 		if prediction:
 			result = 'uninfected'
 		else:
 			result = 'parasitized'
-
-		# if (prediction[0][1] == 0):
-		# 	result = 'uninfected'
-		# else:
-		# 	result = 'parasitized'
+			
 
 		byteIO = BytesIO()
 		original_img.save(byteIO, format = original_img.format)
