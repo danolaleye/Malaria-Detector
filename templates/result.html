@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+       
+       <div class="col-md-4 col-lg-offset-4">
+         {% if result == "parasitized" %}
+            <h4 style="color:red;">The Uploaded Cell is Parasitized</h1>
+          {% elif result == "uninfected" %}
+             <h4 style="color:green;">The Uploaded Cell is Uninfected</h1>
+          {% endif %}
+       </div>
+       
+       <div class="col-md-4 col-lg-offset-4">
+          <img src="data:image/jpg;base64, {{encoded_photo | safe}}" width="50%">
+       </div>
+    
+{% endblock %}
