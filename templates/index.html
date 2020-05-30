@@ -3,10 +3,10 @@
 
 {% block content %}
    	 
-    	{% if form %}
+    {% if form %}
    	 	<div class="col-md-4 col-lg-offset-4">
    		     	{{ wtf.quick_form(form) }}
-   		 </div>
-   	 {% endif %}
+   		</div>
+   	{% endif %}
     
 {% endblock %}

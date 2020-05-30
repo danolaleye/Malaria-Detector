@@ -23,7 +23,7 @@ saved_model = load_model('malaria_detector.h5')
 
 class UploadForm(FlaskForm):
 	"""Upload image form"""
-	photo = FileField('Upload an image', validators=[FileAllowed(['jpg', 'png', 'jpeg'], 
+	photo = FileField('Upload a cell image below', validators=[FileAllowed(['jpg', 'png', 'jpeg'], 
 	u'Image only!'), FileRequired(u'File was empty!')])
 	submit = SubmitField(u'Predict!')
 
@@ -66,7 +66,7 @@ def predict():
 			result = 'uninfected'
 		else:
 			result = 'parasitized'
-			
+
 
 		byteIO = BytesIO()
 		original_img.save(byteIO, format = original_img.format)
